@@ -4,8 +4,8 @@
  */
 package com.example.demo.Controlador;
 
-import com.example.demo.Modelo.Category;
-import com.example.demo.Servicio.CategoryServicio;
+import com.example.demo.Modelo.Client;
+import com.example.demo.Servicio.ClientServicio;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,25 +23,24 @@ import org.springframework.web.bind.annotation.RestController;
  * @author USUARIO
  */
 @RestController
-@RequestMapping("/api/Category")
+@RequestMapping("/api/Client")
 
-public class CategoryControlador {
-     @Autowired
-    private CategoryServicio categoryService;
+public class ClientControlador {
+         @Autowired
+    private ClientServicio clientService;
     @GetMapping("/all")
-    public List<Category> getCategory(){
-        return categoryService.getAll();
+    public List<Client> getClients(){
+        return clientService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Category> getCategory(@PathVariable("id") int Id) {
-        return categoryService.getGama(Id);
+    public Optional<Client> getClient(@PathVariable("id") int clientId) {
+        return clientService.getClient(clientId);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Category save(@RequestBody Category category) {
-        return categoryService.save(category);
+    public Client save(@RequestBody Client client) {
+        return clientService.save(client);
     }
-    
 }

@@ -4,8 +4,8 @@
  */
 package com.example.demo.Controlador;
 
-import com.example.demo.Modelo.Category;
-import com.example.demo.Servicio.CategoryServicio;
+import com.example.demo.Modelo.Machine;
+import com.example.demo.Servicio.MachineServicio;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,26 +22,26 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author USUARIO
  */
-@RestController
-@RequestMapping("/api/Category")
 
-public class CategoryControlador {
+@RestController
+@RequestMapping("/api/Machine")
+
+public class MachineControlador {
      @Autowired
-    private CategoryServicio categoryService;
+    private MachineServicio machineService;
     @GetMapping("/all")
-    public List<Category> getCategory(){
-        return categoryService.getAll();
+    public List<Machine> getMachines(){
+        return machineService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Category> getCategory(@PathVariable("id") int Id) {
-        return categoryService.getGama(Id);
+    public Optional<Machine> getMachine(@PathVariable("id") int machineId) {
+        return machineService.getMachine(machineId);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Category save(@RequestBody Category category) {
-        return categoryService.save(category);
+    public Machine save(@RequestBody Machine machine) {
+        return machineService.save(machine);
     }
-    
 }
